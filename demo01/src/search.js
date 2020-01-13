@@ -9,7 +9,7 @@ class Search extends React.Component {
 
   render() {
     return <div className="search-text">
-    Search Text Cotent test
+    Search Text Cotent test for HMR
     <img src = { img } />
     </div>
   }
