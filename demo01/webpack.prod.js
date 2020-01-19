@@ -1,10 +1,27 @@
 'user strict';
 
+const glob = require('glob')
 const path = require('path')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const setMPA = () => {
+  const entry = {}
+  const htmlWebpackPlugins = []
+
+  const entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'))
+
+  console.log('entryFiles', entryFiles)
+
+  return {
+    entry,
+    htmlWebpackPlugins
+  }
+}
+
+setMPA()
 
 module.exports = {
   entry: {
