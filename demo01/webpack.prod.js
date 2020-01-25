@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 const setMPA = () => {
   const entry = {}
@@ -123,6 +124,14 @@ module.exports = {
       assetNameRegExp: /\.css$/g,
       cssProcessor:   require('cssnano')
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'bootstrap',
+          entry: 'dist/css/bootstrap.min.css',
+        },
+      ]
+    })
   ].concat(htmlWebpackPlugins)
 }
