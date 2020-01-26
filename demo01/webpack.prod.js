@@ -128,8 +128,14 @@ module.exports = {
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
-          module: 'bootstrap',
-          entry: 'dist/css/bootstrap.min.css',
+          module: 'react',
+          entry: 'https://unpkg.com/jquery@3.2.1/dist/jquery.min.js',
+          global: 'React',
+        },
+        {
+          module: 'react-dom',
+          entry: 'https://unpkg.com/jquery@3.2.1/dist/jquery.min.js',
+          global: 'ReactDom',
         },
       ]
     })
