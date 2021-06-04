@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var person = {
+      name: '张三',
+      run: function (time) {
+        console.log(`${this.name} 在跑步 最多 ${time} min 就不行了 `)
+      }
+    }
+
+    person.run(30)
+    person.run.call(person, 30)
+
+// 箭头函数不能用于构造函数
+    var x = 11
+    var obj = {
+      x: 22,
+      say: () => {
+        console.log(this.x) // 箭头函数的 this 是外层代码块的 this
+      }
+    }
+
+    obj.say() // 11 
+
+    var obj = {
+      birth: 1990,
+      getAge: function () {
+        var b = this.birth // 1990
+        var fn = () => new Date().getFullYear() - this.birth
+        return fn()
+      }
+    }
+
+    console.log(obj.getAge()) // 31
+  </script>
+</body>
+</html>
