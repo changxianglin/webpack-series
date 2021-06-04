@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function fn(a, c) {
+      console.log(a) // function a() {}
+      var a = 123
+      console.log(a) // 123
+      console.log(c) // function c() {}
+      function a() {}
+      if(false) {
+        var d = 678
+      }
+      console.log(d) // undefined
+      console.log(b) // undefined 提升了 b 声明 但无赋值(undefined)
+      var b = function () {}
+      console.log(b) // function () {} 上一步才有赋值操作
+      function c() {}
+      console.log(c) // function c() {}
+    }
+    
+    fn(1, 2)
+    // 1,创建 ao 对象 1, 找形参和变量声明 作为 ao 对的属性名, 值是 undefined 3,形参与实参映射 4, 找到函数声明, 会覆盖变量的声明
+  </script>
+</body>
+</html>
