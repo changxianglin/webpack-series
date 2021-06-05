@@ -17,23 +17,58 @@
       hobby: ['学习', ['看电影', 'shopping'], '跑步']
     }
 
-    var person1 = person
-    person1.name = '王晓星'
+    // var person1 = person
+    // person1.name = '王晓星'
 
-    person1.hobby[0] = '玩耍'
-    console.log(person)
-    console.log(person1)
-
+    // person1.hobby[0] = '玩耍'
+    // console.log(person) // 一样
+    // console.log(person1) // 一样
 
     function shallowCopy(obj) {
       var target = {}
       for(var i in obj)  {
-        if(obj.hasOwnProperty) {
+        if(obj.hasOwnProperty(i)) {
           target[i] = obj[i]
         }
       }
       return target
     }
+
+    // var person1 = shallowCopy(person) // 只拷贝了第一层基本数据类型
+
+    // person1.name = '王晓星'
+
+    // person1.hobby[0] = '玩耍'
+    // console.log(person) // 不一样 基本数据类型不影响,其重新赋值操作, 引用数据类型会影响 name: 爱就一个字
+    // console.log(person1) // 不一样 name: 王晓星
+
+
+    function deepClone(obj) {
+      var cloneObj = new obj.constructor()
+      if(obj === null) return obj
+      if(obj instanceof Date) return new Date(obj)
+      if(obj instanceof RegExp) return new RegExp(obj)
+      if(typeof obj !== 'object') return obj
+      for(var i in obj)  {
+        if(obj.hasOwnProperty(i)) {
+          cloneObj[i] = deepClone(obj[i])
+        }
+      }
+      return cloneObj
+    }
+
+    var person1 = deepClone(person) // 深层次的递归拷贝
+    // var person1 = JSON.parse(JSON.stringify(person)) // 正式, 函数, 或者 JSON 不安全的颜文字有问题
+
+    person1.name = '王晓星'
+
+    person1.hobby[0] = '玩耍'
+    console.log(person) // 不一样
+    console.log(person1) // 不一样
+
+    // 赋值   和原始数据指向同一个数据  基本数据会改变    非基本数据类型会改变
+    // 浅拷贝 和原始数据指向不同数据    基本数据不会改变  非基本数据类型会改变
+    // 深拷贝 和原始数据指向不同数据    基本数据不会改变  非基本数据类型不会改变
   </script>
 </body>
 </html>
