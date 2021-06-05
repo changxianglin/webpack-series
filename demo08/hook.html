@@ -49,6 +49,18 @@
 
     a = 1000
     console.log(a)
+
+    var proxyObj = new Proxy({}, {
+      get: function(target, propKey, receiver) {
+        console.log('get', target[propKey], propKey, receiver)
+      },
+      set: function() {
+        console.log('set')
+      }
+    })
+
+    proxyObj.name = 'li'
+    console.log(proxyObj.name)
   </script>
 </body>
 </html>
