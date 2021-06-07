@@ -1,0 +1,9 @@
+.upload {
+  border: 1px solid #666;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.file {
+  display: none;
+}
