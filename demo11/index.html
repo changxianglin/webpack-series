@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es6</title>
+</head>
+<body>
+  <script>
+    const log = console.log.bind(console)
+    // var obj = {foo: 'bar', baz: 42}
+    // console.log(Object.keys(obj).toString())
+
+    
+    // const foo = {
+    //   test: (obj) => {
+    //     console.log(obj)
+    //   }
+    // }
+
+    // const { test } = foo
+
+    // test({a: 123, b: 456})
+
+    let { keys, values, entries } = Object
+    // console.log('key', keys)
+    let obj = {a: 1, b: 2, c: 3}
+
+    // for (let key of keys(obj)) {
+    //   console.log(key) // a, b, c
+    // }
+
+    // for (let value of values(obj)) {
+    //   log(value) // 1, 2, 3
+    // }
+
+    // for (let [key, value] of entries(obj)) {
+    //   log([key, value])
+    // }
+
+    // const obj2 = Object.create({}, {p: {value: 42}})
+    // log(obj2)
+    // log(Object.values(obj2)) // p 的描述对象 enumberable 默认是 false 
+
+    // const obj3 = Object.create({}, {
+    //   p: {
+    //     value: 42, 
+    //     enumerable: true
+    //   }
+    // })
+
+    // log(Object.values(obj3))
+
+    // const obj4 = { one: 1, two: 2 }
+    // for(let [k, v] of Object.entries(obj4)) {
+    //   log(`${JSON.stringify(k)}: ${JSON.stringify(v)}`)
+    // }
+
+    const map = new Map().set('foo', true).set('bar', false);
+    log(Object.fromEntries(map))
+
+    log(Object.fromEntries(new URLSearchParams('foo=bar&baz=qux')))
+
+
+  </script>
+</body>
+</html>
