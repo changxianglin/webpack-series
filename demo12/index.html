@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+</head>
+<body>
+  <script>
+    const log = console.log.bind(console)
+
+    // function Point(x, y) {
+    //   this.x = x
+    //   this.y = y
+    // }
+
+    // Point.prototype.toString = function () {
+    //   return '(' + this.x + ', ' + this.y + ')'
+    // }
+
+    // var p = new Point(1, 2)
+    // log(p)
+
+    // class Point {
+    //   constructor(x, y) {
+    //     this.x = x
+    //     this.y = y
+    //   }
+
+    //   toString() {
+    //     return '(' + this.x + ', ' + this.y + ')'
+    //   }
+    // }
+
+    // var p = new Point(1, 2)
+    // log(p)
+
+    // class Point {
+
+    // }
+
+    // log(typeof Point)
+    // log(Point === Point.prototype.constructor)
+
+    // class Bar {
+    //   doStuff() {
+    //     log('stuff')
+    //   }
+    // }
+    // const b = new Bar()
+    // b.doStuff()
+
+    // class Point {
+    //   constructor() {
+
+    //   }
+
+    //   toString() {
+
+    //   }
+
+    //   toValue() {
+
+    //   }
+    // }
+
+    // Point.prototype = {
+    //   constructor() {},
+    //   toString() {},
+    //   toValue() {},
+    // }
+
+    // class B {}
+    // const b = new B()
+    // log(b.constructor === B.prototype.constructor)
+
+
+    // class Point {
+    //   constructor() {
+
+    //   }
+    // }
+
+    // Object.assign(Point.prototype, {
+    //   toString(){},
+    //   toValue() {},
+    // })
+
+    // log(Point.prototype.constructor === Point)
+
+
+    // class Point {
+    //   constructor(x, y) {
+
+    //   }
+
+    //   toString() {
+
+    //   }
+    // }
+
+    // log(Object.keys(Point.prototype))
+
+    // log(Object.getOwnPropertyNames(Point.prototype))
+
+
+    // var Point = function (x, y) {
+      
+    // }
+
+    // Point.prototype.toString = function () {
+      
+    // }
+
+    // log(Object.keys(Point.prototype))
+
+    // log(Object.getOwnPropertyNames(Point.prototype))
+
+    // class Point {}
+
+    // var point = Point(2, 3) 
+
+    //  var point = new Point(2, 3)
+
+    // class Point {
+    //   constructor(x, y) {
+    //     this.x = x
+    //     this.y = y
+    //   }
+
+    //   toString() {
+    //     return '(' + this.x + ', ' + this.y + ')'
+    //   }
+    // }
+
+    // var point = new Point(2, 3) // 创建实例 point
+    // log(point.toString())
+
+    // log(point.hasOwnProperty('x')) 
+    // log(point.hasOwnProperty('y'))
+    // log(point.hasOwnProperty('toString')) // 原型对象上
+    // log(point.__proto__.hasOwnProperty('toString')) // 原型对象上存在
+
+    // var p1 = new Point(2, 3)
+    // var p2 = new Point(3, 2)
+
+    // log(p1.__proto__ === p2.__proto__) // 谨慎使用 __proto__ 属性改写原型
+
+    // class Myclass {
+    //   constructor() {
+
+    //   }
+
+    //   get prop() {
+    //     return 'getter'
+    //   }
+
+    //   set prop(value){
+    //     log('setter: ' + value)
+    //   }
+    // }
+
+    // let inst = new Myclass()
+
+    // inst.prop = 123
+
+    // log(inst.prop)
+
+    // class CustomHTMLElement {
+    //   constructor(element) {
+    //     this.element = element
+    //   }
+
+    //   get html() {
+    //     return this.element.innerHTML 
+    //   }
+
+    //   set html(value) {
+    //     this.element.innerHTML = value
+    //   }
+    // }
+
+    // var descriptor = Object.getOwnPropertyDescriptor(
+    //   CustomHTMLElement.prototype, 'html'
+    // )
+
+    // log('get' in descriptor)
+    // log('set' in descriptor)
+
+    // let methodName = 'getArea'
+
+    // class Square {
+    //   constructor(length) {
+
+    //   }
+
+    //   [methodName]() {
+
+    //   }
+    // }
+
+    // class MyClass = class Me {
+    //   getClassName() {
+    //     return Me.name
+    //   }
+    // }
+
+    // let person = new class {
+    //   constructor(name) {
+    //     this.name = name 
+    //   }
+
+    //   sayName() {
+    //     console.log(this.name)
+    //   }
+    // }('张三')
+
+    // person.sayName()
+
+
+    // new Foo()
+    // class Foo {}
+
+    // class Point {}
+    // Point.name
+
+    // class Foo {
+    //   constructor(...args) {
+    //     this.args = args
+    //   }
+    //   * [Symbol.iterator]() {
+    //     for (let arg of this.args) {
+    //       yield arg
+    //     }
+    //   }
+    // }
+
+    // for (let x of new Foo('hello', 'world')) {
+    //   console.log(x)
+    // }
+
+    // class Logger {
+    //   constructor() {
+    //     this.printName = this.printName.bind(this)
+    //   }
+    // }
+
+    // class Obj {
+    //   constructor() {
+    //     this.getThis = () => this
+    //   }
+    // }
+
+    // const myObj = new Obj()
+    // log(myObj.getThis() === myObj)
+
+    // function selfish(target) {
+    //   const cache = new WeakMap()
+    //   const handler = {
+    //     get (target, key) {
+    //       const value = Reflect.get(target, key)
+    //       if(typeof value !== 'function') {
+    //         return value
+    //       }
+    //       if(!cache.has(value)) {
+    //         cache.set(value, value.bind(target))
+    //       }
+    //       return cache.get(value)
+    //     }
+    //   }
+    //   const proxy = new Proxy(target, handler)
+    //   return proxy
+    // }
+
+    // const logger = selfish(new Logger())
+
+    class Foo {
+      static classMethod() {
+        return 'hello'
+      }
+    }
+
+    Foo.classMethod()
+  </script>
+</body>
+</html>
