@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>array</title>
+</head>
+<body>
+  <script>
+    const log = console.log.bind(console)
+
+
+    // log(...[1, 2, 3])
+
+    // log(1, ...[2, 3, 4], 5)
+
+    // log(document.querySelectorAll('div'))
+
+
+    // function push(array, ...items) {
+    //   array.push(...items)
+    // }
+
+    // function add(x, y) {
+    //   return x + y
+    // }
+
+    // const numbers = [4, 38]
+    // log(add(...numbers))
+
+    // function f(v, w, x, y, z) {}
+    // const args = [0, 1]
+    // f(-1, ...args, 2, ...[3])
+
+    // function f(x, y, z) {
+      
+    // }
+
+    // var args = [0, 1, 2]
+    // f.apply(null, args)
+
+    // function f(x, y, z) {
+      
+    // }
+
+    // let args = [0, 1, 2]
+    // f(...args)
+
+
+    Math.max.apply(null, [14, 3, 77])
+
+    Math.max(...[14, 3, 77])
+
+    Math.max(14, 3, 77)
+  </script>
+</body>
+</html>
