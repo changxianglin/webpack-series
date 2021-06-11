@@ -48,11 +48,63 @@
     // f(...args)
 
 
-    Math.max.apply(null, [14, 3, 77])
+    // Math.max.apply(null, [14, 3, 77])
 
-    Math.max(...[14, 3, 77])
+    // Math.max(...[14, 3, 77])
 
-    Math.max(14, 3, 77)
+    // Math.max(14, 3, 77)
+
+
+    // var arr1 = [0, 1, 2]
+    // var arr2 = [3, 4, 5]
+    // Array.prototype.push.apply(arr1, arr2)
+    // console.log(arr1)
+
+    // let arr1 = [0, 1, 2]
+    // let arr2 = [3, 4, 5]
+    // arr1.push(...arr2)
+    // console.log(arr1);
+
+    // const a1 = [1, 2]
+    // const a2 = a1
+
+    // a2[0] = 2
+    // log(a1) // [2, 2]
+
+      // const a1 = [1, 2]
+      // const a2 = a1.concat()
+
+      // a2[0] = 2
+      // log(a1) // [1, 2]
+
+
+      // const a1 = [1, 2]
+      // const a2 = [...a1]
+      // const [...a2] = a1
+
+      // log(a2)
+
+      // const arr1 = ['a', 'b']
+      // const arr2 = ['c']
+      // const arr3 = ['d', 'e']
+
+      // log(arr1.concat(arr2, arr3))
+
+      // log([...arr1, ...arr2, ...arr3])
+
+      // const a1 = [{foo: 1}]
+      // const a2 = [{bar: 2}]
+
+      // const a3 = a1.concat(a2)
+      // const a4 = [...a1, ...a2]
+
+      // log(a3[0] === a1[0])
+      // log(a4[0] === a1[0])
+
+      a = list[0]
+      reset = list.slice(1)
+
+
   </script>
 </body>
 </html>
