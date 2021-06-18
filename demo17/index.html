@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button">点击</button>
+  <script>
+    // 截流函数
+    function thro(func, wait) {
+      let timerOut 
+      return function () {
+        if(!timerOut) {
+          timerOut = setTimeout(() => {
+            func()
+            // 执行后得释放
+            timerOut = null
+          }, wait);
+        }
+      }
+    }
+
+    function handle() {
+      console.log(Math.random())
+    }
+
+    document.getElementById('button').onclick = thro(handle, 2000)
+  </script>
+</body>
+</html>
