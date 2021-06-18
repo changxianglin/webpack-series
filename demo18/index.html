@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域</title>
+</head>
+<body>
+  <script>
+    // 作用域
+    // 全局作用域
+    // 函数作用域
+    // 执行常见 GO(全局) AO(函数)
+    // 预编译 (变量声明,函数声明都会提升至顶部)
+
+    // 作用域链 [scope] GO 与 AO 集合
+    // function fn() {
+      
+    // }
+    // console.log(fn.name)
+
+    // var global
+    
+    // function a() {
+    //   function b() {
+    //     var bb = 123
+    //     aa = 0
+    //   }
+    //   var aa = 123
+    //   b()
+    // }
+
+    // a()
+
+    // a()
+
+    function a() {
+      var aa = 123
+      function b() {
+        var bb = 234
+        console.log(aa)
+      }
+
+      return b
+    }
+
+    var res = a()
+    res()
+  </script>
+</body>
+</html>
