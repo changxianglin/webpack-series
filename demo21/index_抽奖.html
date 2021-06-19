@@ -38,8 +38,12 @@
     var oTurntable = document.getElementsByTagName('img')[1]
     var cat = 45
     var num = 0
+    var offon = true
     oPointer.onclick = function () {
-      rataing()
+      if(offon) {
+        offon = !offon
+        rataing()
+      }
     }
 
     function rataing() {
@@ -48,6 +52,7 @@
       oTurntable.style.transform = `rotate(${rdm}deg)`
 
       setTimeout(() => {
+        offon = !offon
         num = rdm % 360
         console.log('数据', num)
         if(num < cat * 1) {
