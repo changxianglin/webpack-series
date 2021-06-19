@@ -7,21 +7,24 @@
   <title>抽奖</title>
   <style>
     .bg {
-      width: 650px;
-      height: 600px;
-      background: url(turntable-bg.jpeg) no-repeat;
+      width: 640px;
+      height: 1300px;
+      background: url(turntable-bg.jpg) no-repeat;
       position: relative;
       margin: 0 auto;
     }
     img[src^="pointer"] {
       position: absolute;
-      top: 0px;
-      left: 0px;
+      top: 360px;
+      left: 260px;
+      z-index: 10;
     }
     img[src^="turntable"] {
       position: absolute;
-      top: 0px;
-      left: 0px;
+      top: 245px;
+      left: 85px;
+
+      transition: all 4s;
     }
   </style>
 </head>
@@ -30,5 +33,19 @@
     <img src="pointer.png" alt="pointer" >
     <img src="turntable.png" alt="turntable">
   </div>
+  <script>
+    var oPointer = document.getElementsByTagName('img')[0]
+    var oTurntable = document.getElementsByTagName('img')[1]
+
+    oPointer.onclick = function () {
+      rataing()
+    }
+
+    function rataing() {
+      var rdm = 0
+      rdm = Math.floor(Math.random() * 10000)
+      oTurntable.style.transform = `rotate(${rdm}deg)`
+    }
+  </script>
 </body>
 </html>
