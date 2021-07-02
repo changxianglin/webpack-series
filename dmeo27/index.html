@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>单例模式</title>
+</head>
+<body>
+  <script>
+    //  function notSingle(params) {
+    //   return 'test'
+    // }
+
+    // var a = notSingle()
+    // var b = notSingle()
+    // console.log(a === b) // true
+
+    // function notSingle(params) {
+    //   return {
+    //     a: 1,
+    //   }
+    // }
+
+    // var a = notSingle()
+    // var b = notSingle()
+    // console.log(a === b) // false
+
+    // function NotSingle() {
+    //   this.a = 123
+    // }
+
+    // var a1 = new NotSingle()
+    // var b1 = new NotSingle()
+
+    // console.log(a1 === b1) // false
+
+    // 单例模式
+    // var _unique = null
+
+    // function createSingle() {
+    //   var obj = {
+    //     a: 1
+    //   }
+    //   if(_unique === null) {
+    //     _unique = obj
+    //   }
+    //   return _unique
+    // }
+
+    // var a = createSingle()
+
+    // // _unique = null  单例失效
+
+    // var b = createSingle()
+
+    // console.log(a === b)
+
+    // 闭包实现单例
+    var createSingle = (function() {
+        var _unique = null
+
+        function single() {
+          return {
+              a: 1
+            }
+        }
+
+        return  function() {
+          if(_unique === null) {
+            _unique = single()
+          }
+          return _unique
+        }
+    })()
+
+    var a1 = createSingle()
+    // console.log(_unique) // _unique is not defined
+    var b1 = createSingle()
+    console.log(a1 === b1)
+  </script>
+</body>
+</html>
