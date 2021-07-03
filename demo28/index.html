@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>装饰器模式</title>
+</head>
+<body>
+  <script>
+    // function Car() {
+    //   this.price = 10
+    // }
+
+    // Car.prototype = {
+    //   addHeatSeat: function () {
+    //     this.hasHeatSeat = true
+    //     this.price += 2
+    //   },
+    //   addAuthoMirror: function () {
+    //     this.hasAutoMirror = true
+    //     this.price += 0.8
+    //   }
+    // }
+
+    // var car1 = new Car()
+    // console.log(car1.price)
+    // car1.addHeatSeat()
+    // car1.addAuthoMirror()
+    // console.log(car1.price)
+
+    function Car() {
+      this.price = 10
+    }
+
+    function carWithHeatSeat(carClass) {
+      carClass.hasHeatSeat = true
+      carClass.price += 2
+    }
+
+    function carWithAutoMirror(carClass) {
+      carClass.hasAutoMirror = true
+      carClass.price += 0.8
+    }
+
+    var car2 = new Car()
+    console.log(car2.price)
+    carWithHeatSeat(car2)
+    carWithAutoMirror(car2)
+    console.log(car2.price)
+  </script>
+</body>
+</html>
