@@ -85,3 +85,7 @@
 
     var result = setValue(list)
     console.log('结果', result)
+
+
+// main 
+// const ts = tokens(s)
