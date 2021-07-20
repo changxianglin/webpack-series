@@ -2,78 +2,45 @@
 // 注释写明代码实现思路
 
 const cutS = (s, i) => {
-  var n = i + 1;
-  var t = "";
-  while (true) {
-    if (s[n] == '"') {
-      console.log(s, "结束", i, n);
-      t = s.slice(i, n);
-      console.log("t", t);
-      n += 1;
-      break;
-    } else {
-      console.log("继续往下读");
-      n += 1;
-    }
-  }
-  console.log("获得", t, n);
-
-  return { s: t, num: n };
-};
-
-const cutA = (s, i) => {
-  var n = i + 1;
-  var l = [];
-  while (true) {
-    if (s[n] == "]") {
-      console.log("结束");
-      n += 1;
-      break;
-    } else if (s[n] == ",") {
-      console.log("开启");
-      const t = s.slice(i, n);
-      l.push();
-      n += 1;
-    }
-  }
-
-  return l;
+  console.log("要计算字符", s[i + 1]);
 };
 
 const tokens = function (str) {
   var ts = [];
   var i = 0;
+
   while (true) {
-    console.log("执行后", str[i]);
-    // console.log(str[i]);
     if (str[i] == "{") {
-      console.log("开头");
-      ts.push(str[i]);
-      i += 1;
-    } else if (str[i] == ":") {
-      console.log("简直");
+      console.log("开始");
       ts.push(str[i]);
       i += 1;
     } else if (str[i] == "}") {
-      console.log("结尾");
+      console.log("结束");
       ts.push(str[i]);
       i += 1;
-    } else if (str[i] == '"') {
-      console.log("字符串");
-      const { s, num } = cutS(str, i + 1);
-      ts.push(s);
-      i = num;
-    } else if (str[i] == "[") {
-      console.log("数组开始");
-      const { a, num } = cutA(str, i + 1);
-      ts.push(a);
-      i = num;
-    } else if (str[i] == "]") {
-      console.log("数组结束");
+      break;
+    } else if (str[i] == ":") {
+      console.log("间隔符号");
       ts.push(str[i]);
+      i += 1;
+    } else if (str[i] == ",") {
+      console.log("逗号");
+      i += 1;
+    } else if ('"') {
+      console.log("字符串开始或者结尾");
+      var s = cutS(str, i);
+      i += 1;
+    } else if (str[i] == " ") {
+      console.log("空格");
+      i += 1;
+    } else if (str[i] == "0") {
+      console.log("小数");
+      i += 1;
+    } else if (str[i] == "-") {
+      console.log("负数");
       i += 1;
     } else {
-      console.log("异常情况, 跳过");
+      console.log("不在规则内");
       i += 1;
     }
 
@@ -98,8 +65,8 @@ const parse = (s) => {
 };
 
 const __main = () => {
-  console.log("test");
-  const s = '{"name": "zhangsan", "list": [1, 2, 3]}';
+  console.log("小惊喜");
+  const s = '{"temp" : -3, "weight": 0.8}';
   parse(s);
 };
 
