@@ -62,12 +62,12 @@ const __main = function () {
   // 语法分析
   // AST
   // ast 嵌套数组
-  // var s = "[123][456[7][8]9]";
-  var s = "[123]";
+  var s = "[123[456[7]8]9]";
+  // var s = "[123]";
   var ts = tokens(s);
   log("ts", ts);
   var ast = parse(ts);
-  log("ast", ast[0]);
+  log("ast", ast);
 };
 
 __main();
