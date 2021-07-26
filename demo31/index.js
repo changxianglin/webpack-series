@@ -58,9 +58,9 @@ function jxi(html) {
       console.error('属性', html.slice(counter, index))
       counter = index
     }
-  }
 
-  result.push(obj)
+    
+  }
 
   console.log('进行中', result)
   // result.push({
