@@ -3,18 +3,33 @@ const log = console.log.bind(console);
 log("work");
 
 const TokenType = {
+  auto: "AUTO",
   bracketLeft: "[",
   bracketRight: "]",
   braceLeft: "{",
   braceRight: "}",
   number: "n",
   string: "s",
+  comma: ",",
+  colon: "_:_",
 };
 
 class Token {
   constructor(value, type) {
     this.type = type;
     this.value = value;
+    var typs = {
+      "{": TokenType.braceLeft,
+      "}": TokenType.braceRight,
+      "[": TokenType.bracketLeft,
+      "]": TokenType.bracketRight,
+      ",": TokenType.comma,
+      ":": TokenType.colon,
+    };
+
+    if (type == TokenType.auto) {
+      this.type = typs[value];
+    }
   }
 }
 
@@ -58,9 +73,29 @@ const readNumber = function (code) {
     index += 1;
     if (!isDigit(c)) {
       var n = code.slice(i, index - 1);
-      i = index - 2;
 
+      i = index - 2;
       return Number(n);
+    }
+  }
+};
+
+const isAuto = function (c) {
+  var auto = "[]{}:,";
+  return auto.indexOf(c) > -1;
+};
+
+const readString = function (code) {
+  var index = i + 1;
+  while (true) {
+    var c = code[index];
+    index += 1;
+    if (c == "'") {
+      var s = code.slice(i, index);
+
+      i = index;
+      console.log("read str", s, code[i]);
+      return s;
     }
   }
 };
@@ -71,25 +106,16 @@ const tokens = function (code) {
   i = 0;
   while (i < code.length) {
     var e = code[i];
-    if (e == "[") {
-      var t = new Token(e, TokenType.bracketLeft);
-      ts.push(t);
-    } else if (e == "]") {
-      var t = new Token(e, TokenType.bracketRight);
-      ts.push(t);
-    } else if (e == "{") {
-      var t = new Token(e, TokenType.braceLeft);
-      ts.push(t);
-    } else if (e == "}") {
-      var t = new Token(e, TokenType.braceRight);
-      ts.push(t);
-    } else if (e == "+") {
-      var t = new Token(e, TokenType.plus);
+    if (isAuto(e)) {
+      var t = new Token(e, TokenType.auto);
       ts.push(t);
     } else if (isDigit(e)) {
-      // e = Number(e);
-      var n = readNumber(code);
-      var t = new Token(n, TokenType.number);
+      var e = readNumber(code);
+      var t = new Token(e, TokenType.number);
+      ts.push(t);
+    } else if (e == "'") {
+      var e = readString(code);
+      var t = new Token(e, TokenType.string);
       ts.push(t);
     } else if (isSpace(e)) {
       log("空格");
@@ -113,6 +139,12 @@ const __main = function () {
     `,
     `
     [12 234]
+    `,
+    `
+    {
+      'key' : 123,
+      'value' : 456
+    }
     `,
   ];
 
