@@ -69,7 +69,7 @@ const readString = function (code) {
   while (true) {
     var c = code[index];
     index += 1;
-    if (c == "'") {
+    if (c == '"') {
       var s = code.slice(i, index);
 
       i = index - 1;
@@ -90,7 +90,7 @@ const tokens = function (code) {
       var e = readNumber(code);
       var t = new Token(e, TokenType.number);
       ts.push(t);
-    } else if (e == "'") {
+    } else if (e == '"') {
       var e = readString(code);
       var t = new Token(e, TokenType.string);
       ts.push(t);
@@ -192,12 +192,12 @@ const parse = function () {
   //   []
   //   `,
   //   `
-  //   [12 234]
+  //   [12, 234]
   //   `,
   //   `
   //   {
-  //     'key' : 123,
-  //     'value' : 456
+  //     "key" : 123,
+  //     "value" : 456
   //   }
   //   `,
   // ];
@@ -208,32 +208,31 @@ const parse = function () {
 
   // var jsonString = `
   //   {
-  //     'number': 2,
-  //     'v': '1.2'
+  //     "number": 2,
+  //     "v": "1.2"
   //   }
   // `;
 
   var jsonString1 = `
     {
-      'number': 2,
-      'values': {
-          'name': 'JavaScript',
-          'version': {
-            'name': {
-              'name': 'JavaScript',
-              'version': 6
+      "number": 2,
+      "values": {
+          "name": "JavaScript",
+          "version": {
+            "name": {
+              "name": "JavaScript",
+              "version": 6
             },
-            'version': 1
+            "version": 1
           }
         }
     }
   `;
   var ts = tokens(jsonString1);
+  log("ts", ts);
   var tl = new TokenList(ts);
   var d = parseJson(tl);
-  log("end", d);
+  // log("end", d);
 };
 
-// parse();
-
-log("htmlparse start");
+parse();
