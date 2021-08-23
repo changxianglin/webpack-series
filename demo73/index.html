@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="mvvm-app">
+    <input type="text" v-model="word">
+    <p>{{word}}</p>
+    <button v-on:click="sayHi">change model</button>
+</div>
+<script src="./observer.js"></script>
+<script src="./watcher.js"></script>
+<script src="./compile.js"></script>
+<script src="./mvvm.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
