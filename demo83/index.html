@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function clone(o) {
+      const temp = {}
+      for(var key in o) {
+        if(typeof o[key] == 'object') {
+          temp[key] = clone(o[key])   
+        } else {
+          temp[key] = o[key]
+        }
+      }
+
+      return temp
+    }
+
+
+    var obj = {
+      name: 'zhangsan',
+      list: [
+        {
+          name: 'lisi',
+          age: '21',
+        }
+      ]
+    }
+
+    // const rr = clone(obj)
+
+    // obj.name = 'wanger'
+    // console.log('obj', obj)
+    // console.log('rrr', rr)
+
+    function deepCopy(obj) {
+      if(typeof obj !== 'object') return 
+      var newObj = obj instanceof Array ? [] : {}
+      for(var key in obj) {
+        if(obj.hasOwnProperty(key)) {
+          newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key]
+        }
+      }
+
+      return newObj
+    }
+
+     const rr = deepCopy(obj)
+    obj.name = 'wanger'
+    console.log('obj', obj)
+    console.log('rrr', rr)
+
+  </script>
+</body>
+</html>
