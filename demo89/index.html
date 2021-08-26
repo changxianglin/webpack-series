@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function Otaku(name, age) {
+    //   this.name = name
+    //   this.age = age
+
+    //   this.habit = 'Games'
+    // }
+
+    // Otaku.prototype.strength = 60
+
+    // Otaku.prototype.sayYourName = function (params) {
+    //   console.log('I am ' + this.name)
+    // }
+
+    // var person = new Otaku('zhangsan', '18')
+
+    // console.log(person.name)
+    // console.log(person.habit)
+    // console.log(person.strength)
+
+    // person.sayYourName()
+
+    // console.log('------')
+
+    // function objectFactory() {
+    //   var obj = new Object()
+
+    //   console.log('查看', arguments)
+
+    //   Constructor = [].shift.call(arguments)
+    //   obj.__proto__ = Constructor.prototype
+    //   Constructor.apply(obj, arguments)
+
+    //   return obj
+    // }
+
+    // var perons = objectFactory(Otaku, 'lisi', '19')
+    // console.log(perons.name)
+    // console.log(perons.habit)
+    // console.log(perons.strength)
+
+    // perons.sayYourName()
+
+    console.log('22222222222222')
+    
+    function Otaku(name, age) {
+      this.strength = 60
+      this.age = age
+
+      // return {
+      //   name: name,
+      //   habit: 'Games',
+      // }
+
+      // return 'handsome boy'
+    }
+
+    const log = console.log.bind(console)
+
+    // var person = new Otaku('zhangsan', '20')
+    // log(person.name)
+    // log(person.habit)
+    // log(person.strength)
+    // log(person.age)
+
+    function objectFactory() {
+      var obj = new Object()
+
+      Constructor = [].shift.call(arguments)
+
+      obj.__proto__ = Constructor.prototype
+
+      var ret = Constructor.apply(obj, arguments)
+
+      return typeof ret === 'object' ? ret : obj
+    }
+
+    var person = objectFactory(Otaku, 'zhangsan', '20')
+    log(person.name)
+    log(person.habit)
+    log(person.strength)
+    log(person.age)
+
+  </script>
+</body>
+</html>
