@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function deepCopy(obj) {
+      if(typeof obj === 'object') {
+        var result = obj.constructor === Array ? [] : {}
+
+        for (const key in obj) {
+          result[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key]
+        }
+      } else {
+        var result = obj
+      }
+
+      return result
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 原来 new
+    // function Person(name, age) {
+    //   this.name = name
+    //   this.age = age
+    // }
+
+    // xm = new Person('xiaoming', 18)
+    // console.log(xm)
+
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    function _new() {
+      // 版本1
+      // var obj = new Object()
+      // var Constructor = [].shift.call(arguments)
+      // obj.__proto__ = Constructor.prototype
+      // const res = Constructor.apply(obj, arguments)
+      // return typeof res === 'object' ? res : obj
+
+      // 版本2
+      // var Func = [].shift.call(arguments)
+      // var obj = Object.create(Func.prototype)
+      // Func.apply(obj, arguments)
+      // return obj 
+    }
+
+    xm = _new(Person, 'xiaoming', 18)
+    console.log(xm)
+
+  </script>
+</body>
+</html>
